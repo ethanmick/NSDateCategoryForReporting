@@ -61,6 +61,7 @@
 // zero out the time components. For example, if the specified date is 
 // April 15 2012 10:00 AM, the return value will be April 16 2012 10:00 AM.
 + (NSDate *)oneDayAfter:(NSDate *)date;
++ (NSDate *)oneDayBefore:(NSDate *)date;
 
 // Returns midnight of the first day of the current, previous or next Month.
 // Note: firstDayOfNextMonth returns midnight of the first day of next month,
@@ -101,6 +102,9 @@
 - (BOOL)isThursday;
 - (BOOL)isFriday;
 - (BOOL)isSaturday;
+
+- (NSDate *)tomorrow;
+- (NSDate *)yesterday;
 
 + (NSInteger)daysBetweenTodayAndDate:(NSDate *)date;
 + (NSInteger)daysBetweenDate:(NSDate*)fromDateTime andDate:(NSDate*)toDateTime;

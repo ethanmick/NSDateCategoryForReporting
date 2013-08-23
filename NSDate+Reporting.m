@@ -91,6 +91,16 @@
                                              options:0];
 }
 
++ (NSDate *)oneDayBefore:(NSDate *)date {
+	NSDateComponents *oneDayComponent = [[NSDateComponents alloc] init];
+	[oneDayComponent setDay:-1];
+    
+	NSCalendar *gregorianCalendar = [[NSCalendar alloc] initWithCalendarIdentifier:NSGregorianCalendar];
+	return [gregorianCalendar dateByAddingComponents:oneDayComponent
+                                              toDate:date
+                                             options:0];
+}
+
 + (NSDate *)firstDayOfCurrentMonth {
     NSCalendar *gregorianCalendar = [[NSCalendar alloc] initWithCalendarIdentifier:NSGregorianCalendar];
     
@@ -276,6 +286,16 @@
     NSDateComponents *difference = [calendar components:NSDayCalendarUnit fromDate:fromDate toDate:toDate options:0];
     
     return [difference day];
+}
+
+- (NSDate *)tomorrow;
+{
+    return [NSDate oneDayAfter:self];
+}
+
+- (NSDate *)yesterday;
+{
+    return [NSDate oneDayBefore:self];
 }
 
 #pragma mark - Private Helper functions
