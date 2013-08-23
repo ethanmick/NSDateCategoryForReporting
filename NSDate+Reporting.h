@@ -101,5 +101,8 @@
 - (BOOL)isThursday;
 - (BOOL)isFriday;
 - (BOOL)isSaturday;
+
++ (NSInteger)daysBetweenTodayAndDate:(NSDate *)date;
++ (NSInteger)daysBetweenDate:(NSDate*)fromDateTime andDate:(NSDate*)toDateTime;
     
 @end
