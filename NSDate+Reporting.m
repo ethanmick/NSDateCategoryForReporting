@@ -27,6 +27,14 @@
 
 #import "NSDate+Reporting.h"
 
+#define Sunday 1
+#define Monday 2
+#define Tuesday 3
+#define Wednesday 4
+#define Thursday 5
+#define Friday 6
+#define Saturday 7
+
 // Private Helper functions
 @interface NSDate (Private)
 + (void)zeroOutTimeComponents:(NSDateComponents **)components;
@@ -215,6 +223,49 @@
                                              options:0];
 }
 
+- (BOOL)isSunday;
+{
+    return [self dayOfWeek] == Sunday;
+}
+
+- (BOOL)isMonday;
+{
+    return [self dayOfWeek] == Monday;
+}
+
+- (BOOL)isTuesday;
+{
+    return [self dayOfWeek] == Tuesday;
+}
+
+- (BOOL)isWednesday;
+{
+    return [self dayOfWeek] == Wednesday;
+}
+
+- (BOOL)isThursday;
+{
+    return [self dayOfWeek] == Thursday;
+}
+
+- (BOOL)isFriday;
+{
+    return [self dayOfWeek] == Friday;
+}
+
+- (BOOL)isSaturday;
+{
+    return [self dayOfWeek] == Saturday;
+}
+
+#pragma mark - Private Helper functions
+
+- (NSInteger)dayOfWeek;
+{
+    NSCalendar *gregorianCalendar = [[NSCalendar alloc] initWithCalendarIdentifier:NSGregorianCalendar];
+    return [[gregorianCalendar components:NSWeekdayCalendarUnit fromDate:self] weekday];
+}
+
 #ifdef DEBUG
 - (void)logWithComment:(NSString *)comment {
     NSString *output = [NSDateFormatter localizedStringFromDate:self
@@ -224,7 +275,7 @@
 }
 #endif
 
-#pragma mark - Private Helper functions
+
 
 + (void)zeroOutTimeComponents:(NSDateComponents **)components {
     [*components setHour:0];

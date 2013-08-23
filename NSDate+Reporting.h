@@ -90,5 +90,16 @@
 //     [test logWithComment:@"First day of current month: "];
 - (void)logWithComment:(NSString *)comment;
 #endif
+
+///
+/// Check if the Date is a certain day
+///
+- (BOOL)isSunday;
+- (BOOL)isMonday;
+- (BOOL)isTuesday;
+- (BOOL)isWednesday;
+- (BOOL)isThursday;
+- (BOOL)isFriday;
+- (BOOL)isSaturday;
     
 @end
