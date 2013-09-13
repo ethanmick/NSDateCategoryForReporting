@@ -248,6 +248,23 @@
     return [NSDate midnightOfDate:self];
 }
 
+- (NSDate *)noon;
+{
+    NSCalendar *gregorianCalendar = [[NSCalendar alloc] initWithCalendarIdentifier:NSGregorianCalendar];
+    
+    // Start out by getting just the year, month and day components of the specified date.
+    NSDateComponents *components = [gregorianCalendar components:NSYearCalendarUnit | NSMonthCalendarUnit | NSDayCalendarUnit
+                                                        fromDate:self];
+    // Zero out the hour, minute and second components.
+    [NSDate zeroOutTimeComponents:&components];
+    
+    // Set to noon
+    [components setHour:12];
+    
+    // Convert the components back into a date and return it.
+    return [gregorianCalendar dateFromComponents:components];
+}
+
 - (NSDate *)justBeforeMidnight;
 {
     return [NSDate oneSecondBefore:[NSDate oneDayAfter:[NSDate midnightOfDate:self]]];

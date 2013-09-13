@@ -106,6 +106,7 @@
 - (NSDate *)tomorrow;
 - (NSDate *)yesterday;
 - (NSDate *)midnight;
+- (NSDate *)noon;
 - (NSDate *)justBeforeMidnight;
 
 + (NSInteger)daysBetweenTodayAndDate:(NSDate *)date;
