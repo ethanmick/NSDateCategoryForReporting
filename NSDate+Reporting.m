@@ -101,6 +101,16 @@
                                              options:0];
 }
 
++ (NSDate *)oneSecondBefore:(NSDate *)date {
+	NSDateComponents *oneDayComponent = [[NSDateComponents alloc] init];
+	[oneDayComponent setSecond:-1];
+    
+	NSCalendar *gregorianCalendar = [[NSCalendar alloc] initWithCalendarIdentifier:NSGregorianCalendar];
+	return [gregorianCalendar dateByAddingComponents:oneDayComponent
+                                              toDate:date
+                                             options:0];
+}
+
 + (NSDate *)firstDayOfCurrentMonth {
     NSCalendar *gregorianCalendar = [[NSCalendar alloc] initWithCalendarIdentifier:NSGregorianCalendar];
     
@@ -231,6 +241,16 @@
     return [gregorianCalendar dateByAddingComponents:plusOneYearComponent
                                               toDate:firstDayOfCurrentYear
                                              options:0];
+}
+
+- (NSDate *)midnight;
+{
+    return [NSDate midnightOfDate:self];
+}
+
+- (NSDate *)justBeforeMidnight;
+{
+    return [NSDate oneSecondBefore:[NSDate oneDayAfter:[NSDate midnightOfDate:self]]];
 }
 
 - (BOOL)isSunday;
